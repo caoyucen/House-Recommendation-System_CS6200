@@ -9,12 +9,10 @@ from urllib.error import HTTPError
 es = Elasticsearch(host="localhost", port=9200)
 app = Flask(__name__)
 
-
 @app.route('/')
 @app.route('/main')
 def main_page():
     return render_template('main.html')
-
 
 @app.route('/personal', methods=['GET', 'POST'])
 def get_personalResult():
@@ -31,26 +29,6 @@ def get_personalResult():
     _search_area = "Description"
     _index = "test_project_index2"
     res = es.search(index=_index, size=20, body={"query": {"match": {_search_area: _search_data}}})
-    # print(res)
-    # allDatas = res.get("hits").get("hits")
-    # dataList = []
-    # count = 0
-    # for data in allDatas:
-    #     print(type(data))
-    #     newString = data['_source']['Description']
-    #     imgUrl = data['_source']['ImageUrl']
-    #     try:
-    #         urllib.request.urlretrieve(imgUrl)
-    #     except urllib.error.HTTPError as err:
-    #         print("err code = ")
-    #         print(err.code)
-    #         data['_source'][
-    #             'ImageUrl'] = "https://static.trulia-cdn.com/pictures/thumbs_5/ps.115/f/1/9/e/picture-uh=50a3fff10b8c3a0e1a30fa26a4b5f8-ps=f19eee5cfe208912d924bf9136f63c66.jpg"
-    #     data['_source']['Description'] = str(newString).replace("\"", " ")
-    #     dataList.append(data['_source'])
-    #     count = count + 1
-    # print(count)
-    # jsonString = str(json.dumps(dataList)).replace("'", " ")
     allDatas = res.get("hits").get("hits")
     dataList = []
     count = 0
@@ -123,7 +101,7 @@ def login_page():
 
 def get_userData(name):
     es = Elasticsearch(host="localhost", port=9200)
-    _index = "test_project_user"
+    _index = "test_project_user1"
     res = es.search(index=_index, body={"query": {"match": {"name": name}}})
     # print(res)
     data = res.get("hits").get("hits")
@@ -134,7 +112,7 @@ def get_userData(name):
 
 def update_userData(name, addString):
     es = Elasticsearch(host="localhost", port=9200)
-    _index = "test_project_user"
+    _index = "test_project_user1"
     res = es.search(index=_index, body={"query": {"match": {"name": name}}})
     data = res.get("hits").get("hits")
     userDate = data[0].get("_source")

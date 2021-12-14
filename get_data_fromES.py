@@ -17,16 +17,16 @@ def check_houseData():
     # res = es.search(index=_index, body={"query": {"match": {"UniqId": UniqId}}})
     print(res)
 
-def check_userData():
+def check_userData(name):
     es = Elasticsearch(host="localhost", port=9200)
-    _index = "test_project_user"
-    name = "caoyucen"
+    _index = "test_project_user1"
+    name = name
     res = es.search(index=_index, body={"query": {"match": {"name": name}}})
     print(res)
 
 def update_userData(name, newString):
     es = Elasticsearch(host="localhost", port=9200)
-    _index = "test_project_user"
+    _index = "test_project_user1"
     res = es.search(index=_index, body={"query": {"match": {"name": name}}})
     data = res.get("hits").get("hits")
     # print(data[0])
@@ -46,5 +46,5 @@ def update_userData(name, newString):
 
 if __name__ == '__main__':
     # check_houseData()
-    check_userData()
+    check_userData("amy")
     #update_userData("YYDS", "fire")
