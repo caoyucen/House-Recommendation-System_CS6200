@@ -33,7 +33,7 @@ def get_personalResult():
     dataList = []
     count = 0
     for data in allDatas:
-        print(type(data))
+        # print(type(data))
         newString = data['_source']['Description']
         imgUrl = data['_source']['ImageUrl']
         if (imgUrl == ""):
@@ -43,8 +43,8 @@ def get_personalResult():
             try:
                 urllib.request.urlretrieve(imgUrl)
             except urllib.error.HTTPError as err:
-                print("err code = ")
-                print(err.code)
+                # print("err code = ")
+                # print(err.code)
                 data['_source'][
                     'ImageUrl'] = "https://static.trulia-cdn.com/pictures/thumbs_5/ps.115/f/1/9/e/picture-uh=50a3fff10b8c3a0e1a30fa26a4b5f8-ps=f19eee5cfe208912d924bf9136f63c66.jpg"
         data['_source']['Description'] = str(newString).replace("\"", " ")
@@ -71,7 +71,7 @@ def get_result():
         dataList = []
         count = 0
         for data in allDatas:
-            print(type(data))
+            # print(type(data))
             newString = data['_source']['Description']
             imgUrl = data['_source']['ImageUrl']
             if(imgUrl == ""):
@@ -81,8 +81,8 @@ def get_result():
                 try:
                     urllib.request.urlretrieve(imgUrl)
                 except urllib.error.HTTPError as err:
-                    print("err code = ")
-                    print(err.code)
+                    # print("err code = ")
+                    # print(err.code)
                     data['_source'][
                     'ImageUrl'] = "https://static.trulia-cdn.com/pictures/thumbs_5/ps.115/f/1/9/e/picture-uh=50a3fff10b8c3a0e1a30fa26a4b5f8-ps=f19eee5cfe208912d924bf9136f63c66.jpg"
             data['_source']['Description'] = str(newString).replace("\"", " ")
