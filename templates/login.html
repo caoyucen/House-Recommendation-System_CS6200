@@ -36,20 +36,37 @@
 </nav>
 <br>
 
-<!--map-->
 <div class="container">
-    <p>Main page</p>
-</div>
+    <div class="row justify-content-md-center">
+    <h1>Login</h1>
+    <br>
 
-<script>
-    var s = " [{'id':1,'name':'Test1'},{'id':2,'name':'Test2'}]";
-    var myObject = eval('(' + s + ')');
-    for (i in myObject) {
-        console.log(myObject[i]["name"]);
-    }
-</script>
+    <form action="/personal" method="POST">
+        <div class="form-group row">
+            <label for="username" class="col-sm-1 col-form-label">User Name</label>
+            <div class="col-sm-4">
+                <input type="username" id="username" name="username" class="form-control" placeholder="User name"
+                       autofocus="autofocus" required>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="password" class="col-sm-1 col-form-label">Password</label>
+            <div class="col-sm-4">
+                <input type="password" id="password" name="password" class="form-control" placeholder="Password"
+                       autofocus="autofocus" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <button type="submit" class="btn btn-primary">Log in</button>
+            </div>
+        </div>
+    </form>
+    <br>
+    <div>Don't have an account? <a href="">Sign up</a></div>
+</div>
+</div>
 
 </body>
 </html>
-
-
