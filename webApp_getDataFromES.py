@@ -91,7 +91,7 @@ def get_result():
         print(count)
         jsonString = str(json.dumps(dataList)).replace("'", " ")
         # print(jsonString)
-        return render_template('searchResultPage.html', Datas=jsonString)
+        return render_template('searchResultPage.html', Datas=jsonString, UserName=_user_name)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login_page():
